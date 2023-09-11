@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sensor Data</title>
+</head>
+<body>
+    <h1>Sensor Data</h1>
+    <pre id="sensor-data-json"></pre>
+    <h2>Tabular Data</h2>
+    <table id="sensor-data-table">
+        <thead>
+            <tr>
+                <th>Sensor Name</th>
+                <th>Sensor Value</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        // JSON data from the sensors (replace with your actual sensor data)
+        var sensorData = {
+            "sensor1": 25.5,
+            "sensor2": 30.2,
+            "sensor3": 18.7,
+            "sensor4": 22.9,
+            "sensor5": 28.1,
+            "sensor6": 19.8,
+            "sensor7": 35.0,
+            "sensor8": 27.3,
+            "sensor9": 21.6,
+            "sensor10": 32.4,
+        };
+
+        // Display JSON data
+        var sensorDataJsonElement = document.getElementById("sensor-data-json");
+        sensorDataJsonElement.textContent = JSON.stringify(sensorData, null, 4);
+
+        // Display data in a table
+        var sensorDataTableBody = document.querySelector("#sensor-data-table tbody");
+        for (var sensor in sensorData) {
+            if (sensorData.hasOwnProperty(sensor)) {
+                var row = sensorDataTableBody.insertRow();
+                var nameCell = row.insertCell(0);
+                var valueCell = row.insertCell(1);
+
+                nameCell.textContent = sensor;
+                valueCell.textContent = sensorData[sensor];
+            }
+        }
+    </script>
+</body>
+</html>
