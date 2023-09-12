@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sensor Data</title>
+    
+   
+
+    
+</head>
+<body>
+    <h1>Sensor Display</h1>
+    <div class="container">
+        <div>
+            <h2>Left Side Sensors</h2>
+            <table class="sensor-table" id="left-sensor-data-table">
+                <thead>
+                    <tr>
+                        <th class="left-column">Sensor Name</th>
+                        <th class="left-column">Sensor Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Initial rendering of sensor data -->
+                    <tr>
+                        <td class="left-column">sensor1</td>
+                        <td class="left-column" id="sensor1-value">25.5</td>
+                    </tr>
+                    <tr>
+                        <td class="left-column">sensor2</td>
+                        <td class="left-column" id="sensor2-value">30.2</td>
+                    </tr>
+                    <tr>
+                        <td class="left-column">sensor3</td>
+                        <td class="left-column" id="sensor3-value">18.7</td>
+                    </tr>
+                    <tr>
+                        <td class="left-column">sensor4</td>
+                        <td class="left-column" id="sensor4-value">22.9</td>
+                    </tr>
+                    <tr>
+                        <td class="left-column">sensor5</td>
+                        <td class="left-column" id="sensor5-value">28.1</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h2>Right Side Sensors</h2>
+            <table class="sensor-table" id="right-sensor-data-table">
+                <thead>
+                    <tr>
+                        <th class="right-column">Sensor Name</th>
+                        <th class="right-column">Sensor Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Initial rendering of sensor data -->
+                    <tr>
+                        <td class="right-column">sensor6</td>
+                        <td class="right-column" id="sensor6-value">00</td>
+                    </tr>
+                    <tr>
+                        <td class="right-column">sensor7</td>
+                        <td class="right-column" id="sensor7-value">35.0</td>
+                    </tr>
+                    <tr>
+                        <td class="right-column">sensor8</td>
+                        <td class="right-column" id="sensor8-value">27.3</td>
+                    </tr>
+                    <tr>
+                        <td class="right-column">sensor9</td>
+                        <td class="right-column" id="sensor9-value">21.6</td>
+                    </tr>
+                    <tr>
+                        <td class="right-column">sensor10</td>
+                        <td class="right-column" id="sensor10-value">32.4</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Function to generate random sensor values
+        function getRandomSensorValue() {
+            return (Math.random() * 100).toFixed(2); // Random float between 0 and 100
+        }
+
+        // Function to update sensor values and refresh the interface
+        function updateSensorValues() {
+            var sensors = Object.keys(sensorData);
+            for (var i = 0; i < sensors.length; i++) {
+                var sensor = sensors[i];
+                var value = getRandomSensorValue();
+
+                // Update the interface with the new value
+                var valueCell = document.querySelector(`#${sensor}-value`);
+                if (valueCell) {
+                    valueCell.textContent = value;
+                }
+            }
+        }
+
+        // Initial rendering of sensor data
+        updateSensorValues();
+
+        // Update sensor values and refresh the interface every 200ms
+        setInterval(updateSensorValues, 200);
+    </script>
+</body>
+</html>
